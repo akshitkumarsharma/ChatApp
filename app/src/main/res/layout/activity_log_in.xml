@@ -36,7 +36,7 @@
         android:layout_below="@id/edt_email"
         android:layout_marginTop="10dp"
         android:hint="Password"
-        android:inputType="textPassword"
+        android:inputType="text"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp" />
 

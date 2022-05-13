@@ -50,6 +50,7 @@ class LogIn : AppCompatActivity() {
                     //jump to home screen
                     val intent=Intent(this@LogIn, MainActivity::class.java)
                     startActivity(intent)
+                    Toast.makeText(this@LogIn, "Sign in successfully", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@LogIn, "User does not exist", Toast.LENGTH_SHORT).show()
                 }
