@@ -49,6 +49,7 @@ class LogIn : AppCompatActivity() {
                 if (task.isSuccessful) {
                     //jump to home screen
                     val intent=Intent(this@LogIn, MainActivity::class.java)
+                    finish()
                     startActivity(intent)
                     Toast.makeText(this@LogIn, "Sign in successfully", Toast.LENGTH_SHORT).show()
                 } else {
