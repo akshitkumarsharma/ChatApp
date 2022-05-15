@@ -2,6 +2,7 @@ package com.example.chatapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -28,6 +29,8 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
+
+
         val name=intent.getStringExtra("name")
         val receiverUid=intent.getStringExtra("uid")
 
@@ -38,6 +41,7 @@ class ChatActivity : AppCompatActivity() {
         receiveRoom=senderUid + receiverUid
 
         supportActionBar?.title=name
+
 
         chatRecyclerView=findViewById(R.id.chatRecycleView)
         messageBox=findViewById(R.id.messageBox)
