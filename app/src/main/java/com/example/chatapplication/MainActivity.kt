@@ -22,13 +22,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mAuth= FirebaseAuth.getInstance()
-        mDbRef=FirebaseDatabase.getInstance().getReference()
+        mAuth = FirebaseAuth.getInstance()
+        mDbRef = FirebaseDatabase.getInstance().getReference()
 
-        userList= ArrayList()
-        adapter=UserAdapter(this,userList)
+        userList = ArrayList()
+        adapter = UserAdapter(this, userList)
 
-        userRecyclerView=findViewById(R.id.userRecyclerView)
+        userRecyclerView = findViewById(R.id.userRecyclerView)
 
         userRecyclerView.layoutManager = LinearLayoutManager(this)
         userRecyclerView.adapter = adapter
@@ -36,11 +36,10 @@ class MainActivity : AppCompatActivity() {
         mDbRef.child("user").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 userList.clear()
-                for (postSnapshot in snapshot.children)
-                {
-                    val currentUser=postSnapshot.getValue(User::class.java)
+                for (postSnapshot in snapshot.children) {
+                    val currentUser = postSnapshot.getValue(User::class.java)
 
-                    if (mAuth.currentUser?.uid != currentUser?.uid){
+                    if (mAuth.currentUser?.uid != currentUser?.uid) {
                         userList.add(currentUser!!)
                     }
 
@@ -62,9 +61,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.logout){
+        if (item.itemId == R.id.logout) {
             mAuth.signOut()
-            val intent=Intent(this@MainActivity, LogIn::class.java)
+            val intent = Intent(this@MainActivity, LogIn::class.java)
             finish()
             startActivity(intent)
             return true

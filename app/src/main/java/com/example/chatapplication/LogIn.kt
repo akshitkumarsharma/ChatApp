@@ -22,33 +22,32 @@ class LogIn : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        mAuth= FirebaseAuth.getInstance()
+        mAuth = FirebaseAuth.getInstance()
 
-        edtEmail= findViewById(R.id.edt_email)
-        edtPassword=findViewById(R.id.edt_password)
-        btnLogin=findViewById(R.id.btnLogin)
-        btnSignUp=findViewById(R.id.btnSignUp)
+        edtEmail = findViewById(R.id.edt_email)
+        edtPassword = findViewById(R.id.edt_password)
+        btnLogin = findViewById(R.id.btnLogin)
+        btnSignUp = findViewById(R.id.btnSignUp)
 
         btnSignUp.setOnClickListener {
-            val intent=Intent(this,SignUp::class.java)
+            val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
 
         btnLogin.setOnClickListener {
-            val email=edtEmail.text.toString()
-            val password=edtPassword.text.toString()
+            val email = edtEmail.text.toString()
+            val password = edtPassword.text.toString()
 
-            login(email,password)
+            login(email, password)
         }
     }
 
-    private fun login (email: String, password: String)
-    {
+    private fun login(email: String, password: String) {
         mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     //jump to home screen
-                    val intent=Intent(this@LogIn, MainActivity::class.java)
+                    val intent = Intent(this@LogIn, MainActivity::class.java)
                     finish()
                     startActivity(intent)
                     Toast.makeText(this@LogIn, "Sign in successfully", Toast.LENGTH_SHORT).show()
